@@ -1,0 +1,26 @@
+---
+interface Props extends astroHTML.JSX.ButtonHTMLAttributes {
+  variant?: "primary" | "outline" | "ghost";
+}
+
+const { class: className, variant = "primary", ...props } = Astro.props;
+
+const variants = {
+  primary:
+    "bg-white text-black hover:bg-accent hover:scale-[1.02] border border-transparent",
+  outline:
+    "bg-transparent text-white border border-white/20 hover:border-white hover:bg-white/5",
+  ghost: "bg-transparent text-white hover:text-accent hover:bg-white/5",
+};
+---
+
+<button
+  class:list={[
+    "group px-8 py-4 text-[11px] font-black uppercase tracking-[0.3em] transition-all duration-300 flex items-center justify-center gap-4 rounded-none",
+    variants[variant],
+    className,
+  ]}
+  {...props}
+>
+  <slot />
+</button>

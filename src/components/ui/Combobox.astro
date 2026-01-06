@@ -1,0 +1,151 @@
+---
+interface Props {
+  id: string;
+  name?: string;
+  options: { value: string; label: string }[];
+  placeholder?: string;
+  required?: boolean;
+}
+
+const {
+  id,
+  name,
+  options,
+  placeholder = "Seleccionar...",
+  required = false,
+} = Astro.props;
+---
+
+<div class="relative group w-full" id={`combobox-${id}`}>
+  <!-- Hidden Select for Form Submission -->
+  <select
+    id={id}
+    name={name || id}
+    class="sr-only"
+    required={required}
+    tabindex="-1"
+  >
+    <option value="" disabled selected>Seleccionar...</option>
+    {options.map((opt) => <option value={opt.value}>{opt.label}</option>)}
+  </select>
+
+  <!-- Visual Trigger -->
+  <button
+    type="button"
+    class="w-full bg-transparent border border-white/10 p-4 text-white hover:bg-white/5 transition-colors flex justify-between items-center text-left focus:outline-none focus:border-accent group-focus-within:border-accent rounded-none"
+    aria-haspopup="listbox"
+    aria-expanded="false"
+    id={`trigger-${id}`}
+  >
+    <span
+      class="text-zinc-500 font-medium text-sm transition-colors duration-200"
+      id={`display-${id}`}
+    >
+      {placeholder}
+    </span>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="16"
+      height="16"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="1.5"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="text-zinc-500 transition-transform duration-200"
+      id={`icon-${id}`}
+    >
+      <path d="m6 9 6 6 6-6"></path>
+    </svg>
+  </button>
+
+  <!-- Dropdown Options -->
+  <ul
+    class="absolute top-full left-0 w-full bg-zinc-950 border border-white/10 mt-1 shadow-2xl z-50 hidden opacity-0 translate-y-2 transition-all duration-200"
+    id={`list-${id}`}
+    role="listbox"
+  >
+    {
+      options.map((opt) => (
+        <li
+          class="text-zinc-400 hover:text-white hover:bg-white/5 px-4 py-3 cursor-pointer text-sm font-medium transition-colors border-b border-white/5 last:border-0"
+          role="option"
+          data-value={opt.value}
+        >
+          {opt.label}
+        </li>
+      ))
+    }
+  </ul>
+</div>
+
+<script define:vars={{ id }}>
+  const container = document.getElementById(`combobox-${id}`);
+  const trigger = document.getElementById(`trigger-${id}`);
+  const list = document.getElementById(`list-${id}`);
+  const display = document.getElementById(`display-${id}`);
+  const icon = document.getElementById(`icon-${id}`);
+  const select = document.getElementById(id);
+  const options = list.querySelectorAll("li");
+
+  let isOpen = false;
+
+  function toggle(state) {
+    isOpen = state !== undefined ? state : !isOpen;
+
+    if (isOpen) {
+      list.classList.remove("hidden");
+      // Small delay to allow display:block to apply before opacity transition
+      requestAnimationFrame(() => {
+        list.classList.remove("opacity-0", "translate-y-2");
+        icon.style.transform = "rotate(180deg)";
+        trigger.setAttribute("aria-expanded", "true");
+      });
+    } else {
+      list.classList.add("opacity-0", "translate-y-2");
+      icon.style.transform = "rotate(0deg)";
+      trigger.setAttribute("aria-expanded", "false");
+
+      // Wait for transition to finish before hiding
+      setTimeout(() => {
+        if (!isOpen) list.classList.add("hidden");
+      }, 200);
+    }
+  }
+
+  // Toggle on click
+  trigger.addEventListener("click", (e) => {
+    e.stopPropagation(); // Prevent immediate close from document click
+    toggle();
+  });
+
+  // Close when clicking outside
+  document.addEventListener("click", (e) => {
+    if (isOpen && !container.contains(e.target)) {
+      toggle(false);
+    }
+  });
+
+  // Handle option selection
+  options.forEach((opt) => {
+    opt.addEventListener("click", () => {
+      const value = opt.dataset.value;
+      const label = opt.textContent.trim();
+
+      // Update native select
+      select.value = value;
+      select.dispatchEvent(new Event("change"));
+
+      // Update visual display
+      display.textContent = label;
+      display.classList.remove("text-zinc-500");
+      display.classList.add("text-white");
+
+      // Close dropdown
+      toggle(false);
+    });
+  });
+
+  // Optional: Keyboard navigation could be added here for full accessibility
+</script>

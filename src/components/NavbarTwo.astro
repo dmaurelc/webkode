@@ -1,0 +1,192 @@
+---
+const links = [
+  { name: "Servicios", href: "#servicios" },
+  { name: "Portafolio", href: "#proyectos" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Contacto", href: "#agendar" },
+];
+---
+
+<!-- NEW NAVBAR TWO -->
+<header
+  id="n2-header"
+  class="fixed top-0 left-0 w-full h-20 bg-black/95 backdrop-blur-sm border-b border-white/5 flex items-center px-6 md:px-10 z-[9000] transition-all duration-300"
+>
+  <div class="flex items-center justify-between w-full h-full lg:justify-start">
+    <!-- MOBILE TRIGGER (Left) -->
+    <button
+      id="n2-trigger"
+      class="lg:hidden h-12 w-12 flex flex-col items-center justify-center gap-1.5 bg-accent text-black active:scale-95 transition-all"
+      aria-label="Open Menu"
+    >
+      <span class="w-6 h-0.5 bg-current"></span>
+      <span class="w-6 h-0.5 bg-current text-black/50"></span>
+      <span class="w-6 h-0.5 bg-current"></span>
+    </button>
+
+    <!-- MOBILE SPACER -->
+    <div class="lg:hidden flex-1"></div>
+
+    <!-- LOGO (Right on Mobile, Left on Desktop) -->
+    <div class="flex items-center lg:mr-16">
+      <a href="/" class="flex items-center gap-3">
+        <div class="w-8 h-8 bg-white flex items-center justify-center">
+          <span class="text-black font-black text-sm">W</span>
+        </div>
+        <span class="text-xl font-black tracking-tighter text-white uppercase"
+          >webkode</span
+        >
+      </a>
+    </div>
+
+    <!-- DESKTOP NAV -->
+    <nav class="hidden lg:flex items-center gap-12">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500 hover:text-white transition-colors"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- DESKTOP CTA -->
+    <div class="hidden lg:flex ml-auto">
+      <a
+        href="#agendar"
+        class="h-20 flex items-center px-10 bg-white hover:bg-accent text-black transition-colors font-black text-[11px] uppercase tracking-[0.3em]"
+      >
+        Start Project
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- OFFCANVAS MENU -->
+<div
+  id="n2-offcanvas"
+  class="fixed inset-0 z-[9001] pointer-events-none invisible"
+>
+  <!-- Dark Backdrop -->
+  <div
+    id="n2-backdrop"
+    class="absolute inset-0 bg-black/80 opacity-0 transition-opacity duration-500 cursor-pointer"
+  >
+  </div>
+
+  <!-- Content Panel (Slides from left) -->
+  <div
+    id="n2-panel"
+    class="absolute top-0 left-0 w-full h-full bg-black border-r border-white/10 transition-transform duration-500 ease-in-out flex flex-col pt-32 px-10 pointer-events-auto"
+  >
+    <!-- Close Button inside panel -->
+    <button
+      id="n2-close"
+      class="absolute top-6 right-6 text-white/40 hover:text-accent transition-colors"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+      >
+    </button>
+
+    <div class="mb-12">
+      <span
+        class="text-[10px] font-black tracking-[0.4em] uppercase text-zinc-700"
+        >Navigation</span
+      >
+    </div>
+
+    <nav class="flex flex-col gap-10">
+      {
+        links.map((link, i) => (
+          <a
+            href={link.href}
+            class="n2-link text-4xl font-black text-white hover:text-accent transition-all flex items-baseline gap-4"
+          >
+            <span class="text-[10px] font-mono text-accent/30">0{i + 1}</span>
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <div class="mt-auto py-12 border-t border-white/5 flex flex-col gap-4">
+      <span class="text-[9px] font-bold tracking-widest text-zinc-600 uppercase"
+        >Contact</span
+      >
+      <p
+        class="text-[11px] text-white/50 leading-relaxed uppercase tracking-wider"
+      >
+        Los Andes, Chile<br />
+        Visual Architecture Studio
+      </p>
+    </div>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById("n2-trigger");
+  const close = document.getElementById("n2-close");
+  const offcanvas = document.getElementById("n2-offcanvas");
+  const backdrop = document.getElementById("n2-backdrop");
+  const panel = document.getElementById("n2-panel");
+  const menuLinks = document.querySelectorAll(".n2-link");
+
+  function openMenu() {
+    if (!offcanvas || !backdrop || !panel) return;
+    offcanvas.classList.remove("invisible");
+    offcanvas.classList.add("pointer-events-auto");
+    backdrop.classList.add("opacity-100");
+    panel.style.transform = "translateX(0)";
+    document.body.style.overflow = "hidden";
+  }
+
+  function closeMenu() {
+    if (!offcanvas || !backdrop || !panel) return;
+    backdrop.classList.remove("opacity-100");
+    panel.style.transform = "translateX(-100%)";
+    document.body.style.overflow = "";
+
+    setTimeout(() => {
+      offcanvas.classList.add("invisible");
+      offcanvas.classList.remove("pointer-events-auto");
+    }, 500);
+  }
+
+  trigger?.addEventListener("click", openMenu);
+  close?.addEventListener("click", closeMenu);
+  backdrop?.addEventListener("click", closeMenu);
+  menuLinks.forEach((link) => link.addEventListener("click", closeMenu));
+
+  // Header resize on scroll
+  window.addEventListener("scroll", () => {
+    const header = document.getElementById("n2-header");
+    if (header) {
+      if (window.scrollY > 100) {
+        header.classList.add("h-16");
+        header.classList.remove("h-20");
+      } else {
+        header.classList.add("h-20");
+        header.classList.remove("h-16");
+      }
+    }
+  });
+</script>
+
+<style>
+  #n2-panel {
+    box-shadow: 10px 0 60px rgba(0, 0, 0, 1);
+  }
+</style>

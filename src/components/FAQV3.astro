@@ -1,0 +1,145 @@
+---
+const faqs = [
+  {
+    index: "01",
+    question: "¿Qué tecnologías utilizan para el desarrollo?",
+    answer:
+      "Implementamos soluciones con Astro 5, Tailwind CSS v4 y React, optimizando cada byte para un performance de grado arquitectónico.",
+  },
+  {
+    index: "02",
+    question: "¿Cuál es el tiempo estimado de entrega?",
+    answer:
+      "Un desarrollo premium toma entre 4 y 8 semanas. No aceleramos el proceso si compromete la integridad estructural del código.",
+  },
+  {
+    index: "03",
+    question: "¿Ofrecen servicios de consultoría técnica?",
+    answer:
+      "Sí, auditamos arquitecturas existentes y proponemos rutas de migración a stacks modernos con enfoque en escalabilidad.",
+  },
+  {
+    index: "04",
+    question: "¿Cómo garantizan el SEO técnico?",
+    answer:
+      "Mediante SSR (Server Side Rendering), hidratación parcial, sitemaps dinámicos y una estructura de datos JSON-LD impecable.",
+  },
+];
+---
+
+<section
+  class="py-32 px-4 bg-black border-t border-white/5 relative overflow-hidden"
+>
+  <div class="max-w-4xl mx-auto relative z-10">
+    <div class="mb-20">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-2 h-2 rounded-full bg-accent animate-pulse"></span>
+        <span
+          class="text-accent font-mono text-[10px] tracking-[0.3em] uppercase"
+          >Soporte Técnico</span
+        >
+      </div>
+      <h2
+        class="text-5xl md:text-7xl font-bold text-white tracking-tighter normal-case! lead-tight"
+      >
+        Preguntas <br />
+        <span class="text-zinc-600">Frecuentes.</span>
+      </h2>
+    </div>
+
+    <div
+      class="divide-y divide-white/5 border-t border-b border-white/5"
+      id="faq-v3-container"
+    >
+      {
+        faqs.map((faq) => (
+          <div
+            class="faq-item-v3 group py-8 cursor-pointer flex gap-6 md:gap-12 items-start transition-all hover:bg-white/2"
+            data-active="false"
+          >
+            <span class="font-mono text-zinc-600 text-sm pt-1 group-hover:text-accent transition-colors">
+              {faq.index}
+            </span>
+
+            <div class="flex-1">
+              <div class="flex justify-between items-center gap-4">
+                <h3 class="text-xl md:text-2xl text-white font-medium normal-case! transition-colors group-hover:text-accent">
+                  {faq.question}
+                </h3>
+                <div class="w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-all duration-500 faq-icon-v3 shrink-0">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="16"
+                    height="16"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    class="text-white group-hover:text-accent"
+                  >
+                    <path d="M12 5v14M5 12h14" />
+                  </svg>
+                </div>
+              </div>
+
+              <div class="grid grid-rows-[0fr] transition-all duration-500 ease-in-out faq-content-v3">
+                <div class="overflow-hidden">
+                  <p class="text-zinc-500 mt-6 leading-relaxed max-w-2xl text-lg opacity-0 transition-opacity duration-500 faq-answer-v3">
+                    {faq.answer}
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  function initFAQV3() {
+    const container = document.getElementById("faq-v3-container");
+    if (!container) return;
+
+    const items = container.querySelectorAll(".faq-item-v3");
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const isActive = item.getAttribute("data-active") === "true";
+
+        // Accordion logic: close others
+        items.forEach((other) => {
+          if (other !== item) {
+            other.setAttribute("data-active", "false");
+            updateItemV3(other, false);
+          }
+        });
+
+        item.setAttribute("data-active", String(!isActive));
+        updateItemV3(item, !isActive);
+      });
+    });
+  }
+
+  function updateItemV3(item: Element, active: boolean) {
+    const content = item.querySelector(".faq-content-v3");
+    const answer = item.querySelector(".faq-answer-v3");
+    const icon = item.querySelector(".faq-icon-v3");
+
+    if (active) {
+      content?.classList.replace("grid-rows-[0fr]", "grid-rows-[1fr]");
+      answer?.classList.replace("opacity-0", "opacity-100");
+      icon?.classList.add("rotate-45", "border-accent");
+    } else {
+      content?.classList.replace("grid-rows-[1fr]", "grid-rows-[0fr]");
+      answer?.classList.replace("opacity-100", "opacity-0");
+      icon?.classList.remove("rotate-45", "border-accent");
+    }
+  }
+
+  initFAQV3();
+  document.addEventListener("astro:page-load", initFAQV3);
+</script>

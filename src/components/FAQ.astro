@@ -1,0 +1,177 @@
+---
+const faqs = [
+  {
+    question: "¿Qué tecnologías utilizan para el desarrollo?",
+    answer:
+      "Trabajamos principalmente con Astro, React y Tailwind CSS para asegurar el máximo rendimiento (Core Web Vitals) y una experiencia de usuario fluida.",
+  },
+  {
+    question: "¿Cuánto tiempo toma entregar un proyecto?",
+    answer:
+      "Un proyecto boutique estándar suele tomar entre 4 a 8 semanas, dependiendo de la complejidad de las integraciones y el nivel de personalización del diseño.",
+  },
+  {
+    question: "¿Ofrecen servicios de mantenimiento?",
+    answer:
+      "Sí, todos nuestros proyectos incluyen un periodo de garantía y soporte técnico, además de planes de mantenimiento evolutivo para mantener tu sitio a la vanguardia.",
+  },
+  {
+    question: "¿Cómo es el proceso de diseño?",
+    answer:
+      "Fusionamos arquitectura técnica con diseño de autor. Cada pixel es intencional y cada solución es única para la identidad de tu marca.",
+  },
+];
+---
+
+<section
+  id="faq"
+  class="py-20 md:py-40 px-4 md:px-8 bg-brand-bg border-t border-brand-border/30"
+>
+  <div class="max-w-9xl mx-auto">
+    <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-24">
+      <div class="lg:col-span-5">
+        <div class="flex items-center gap-4 mb-8 md:mb-10">
+          <div class="w-8 md:w-12 h-px bg-accent"></div>
+          <span
+            class="text-xs font-light tracking-[0.4em] uppercase text-brand-muted"
+            >Índice Técnico</span
+          >
+        </div>
+        <h2
+          class="text-4xl md:text-6xl font-bold tracking-tighter text-white leading-[0.9] md:leading-[0.85] mb-8 md:mb-12 uppercase"
+        >
+          FAQ <br class="md:flex hidden" />
+          <span class="text-accent">TÉCNICO.</span>
+        </h2>
+        <p
+          class="text-sm md:text-lg text-brand-muted max-w-sm font-normal leading-relaxed"
+        >
+          Nuestra metodología fusiona arquitectura técnica con diseño de autor.
+          Resolvemos las dudas estructurales de tu proyecto.
+        </p>
+      </div>
+
+      <div class="lg:col-span-7">
+        <div class="flex flex-col gap-0 border-b border-white/10" id="faq-container-v1">
+          {
+            faqs.map((faq, index) => (
+              <div class="group border-t border-white/10 py-6 md:py-10 flex flex-col md:grid md:grid-cols-12 gap-4 md:gap-8 items-start md:items-center hover:bg-white/1 transition-all px-0 md:px-4 cursor-pointer faq-item" data-index={index}>
+                <div class="md:col-span-1 flex justify-between w-full md:w-auto items-center">
+                  <span class="text-accent font-mono text-[10px] font-bold opacity-40">
+                    0{index + 1}
+                  </span>
+                  <!-- Mobile Arrow -->
+                  <div class="md:hidden w-6 h-6 flex items-center justify-center border border-white/20 rounded-full transition-transform duration-500 faq-icon-mobile">
+                     <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="12"
+                      height="12"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-white"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </div>
+                </div>
+                <div class="md:col-span-10 w-full">
+                  <div class="flex flex-col gap-3 md:gap-4">
+                    <h3 class="text-lg md:text-2xl font-normal text-white tracking-tight faq-question normal-case!">
+                      {faq.question}
+                    </h3>
+                    <div class="grid grid-rows-[0fr] transition-all duration-500 ease-out faq-answer-wrapper">
+                      <p class="text-brand-muted leading-relaxed font-normal text-sm md:text-base overflow-hidden opacity-0 transition-opacity duration-500 faq-answer">
+                        {faq.answer}
+                      </p>
+                    </div>
+                  </div>
+                </div>
+                <!-- Desktop Arrow -->
+                <div class="hidden md:flex md:col-span-1 justify-end">
+                  <div class="w-6 h-6 flex items-center justify-center border border-white/20 rounded-full group-hover:border-accent transition-all duration-500 faq-icon-desktop">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="14"
+                      height="14"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      class="text-white group-hover:text-accent"
+                    >
+                      <path d="M12 5v14M5 12h14" />
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            ))
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupFAQ() {
+    const container = document.getElementById('faq-container-v1');
+    if (!container) return;
+
+    const items = container.querySelectorAll('.faq-item');
+
+    items.forEach(item => {
+      item.addEventListener('click', () => {
+        const isActive = item.getAttribute('data-active') === 'true';
+        
+        // Close all others (optional - strictly accordion behavior usually allows one or multiple. "Accordion" implies often one open. Let's keep it inclusive or exclusive? Let's toggle individually for now, or close others if requested. Standard often allows toggle.)
+        // Let's implement independent toggles for now as it's friendlier unless specified otherwise.
+        // Actually, "Accordion" often implies mutually exclusive. Let's do mutually exclusive for "Clean" feel.
+        
+        items.forEach(otherItem => {
+          if (otherItem !== item) {
+            otherItem.setAttribute('data-active', 'false');
+            toggleItem(otherItem, false);
+          }
+        });
+
+        // Toggle current
+        const newState = !isActive;
+        item.setAttribute('data-active', String(newState));
+        toggleItem(item, newState);
+      });
+    });
+  }
+
+  function toggleItem(item: Element, show: boolean) {
+    const mobileIcon = item.querySelector('.faq-icon-mobile');
+    const desktopIcon = item.querySelector('.faq-icon-desktop');
+    const answerWrapper = item.querySelector('.faq-answer-wrapper');
+    const answer = item.querySelector('.faq-answer');
+
+    if (show) {
+      mobileIcon?.classList.add('rotate-45', 'border-accent');
+      desktopIcon?.classList.add('rotate-45', 'border-accent');
+      answerWrapper?.classList.remove('grid-rows-[0fr]');
+      answerWrapper?.classList.add('grid-rows-[1fr]');
+      answer?.classList.remove('opacity-0');
+      answer?.classList.add('opacity-100');
+    } else {
+      mobileIcon?.classList.remove('rotate-45', 'border-accent');
+      desktopIcon?.classList.remove('rotate-45', 'border-accent');
+      answerWrapper?.classList.remove('grid-rows-[1fr]');
+      answerWrapper?.classList.add('grid-rows-[0fr]');
+      answer?.classList.remove('opacity-100');
+      answer?.classList.add('opacity-0');
+    }
+  }
+
+  // Run on load and on view transitions
+  setupFAQ();
+  document.addEventListener('astro:page-load', setupFAQ);
+</script>

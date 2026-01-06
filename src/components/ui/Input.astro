@@ -1,0 +1,16 @@
+---
+interface Props extends astroHTML.JSX.InputHTMLAttributes {
+  error?: boolean;
+}
+
+const { class: className, error, ...props } = Astro.props;
+---
+
+<input
+  class:list={[
+    "w-full bg-transparent border border-white/10 px-4 py-4 text-white placeholder:text-zinc-800 focus:outline-none focus:border-accent focus:bg-white/2 transition-all text-sm font-medium rounded-none",
+    error && "border-red-500 focus:border-red-500",
+    className,
+  ]}
+  {...props}
+/>

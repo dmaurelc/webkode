@@ -1,0 +1,67 @@
+---
+const services = [
+  {
+    title: "Diseño Web a Medida",
+    description:
+      "Creamos interfaces únicas que reflejan la esencia de tu marca, priorizando la elegancia y la experiencia de usuario.",
+    icon: "M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5",
+  },
+  {
+    title: "Desarrollo Moderno",
+    description:
+      "Estructuras sólidas con Astro y Tailwind CSS, garantizando un código limpio, escalable y preparado para el futuro.",
+    icon: "M16 18l6-6-6-6M8 6l-6 6 6 6",
+  },
+  {
+    title: "Optimización de Calidad",
+    description:
+      "Cada pixel y cada línea de código se optimizan para ofrecer la máxima velocidad y el mejor rendimiento SEO.",
+    icon: "M13 2L3 14h9l-1 8 10-12h-9l1-8z",
+  },
+];
+---
+
+<section id="servicios" class="py-32 px-8 max-w-7xl mx-auto">
+  <div class="mb-24">
+    <h2
+      class="text-xs font-bold tracking-[0.2em] uppercase text-brand-muted mb-6 flex items-center gap-4"
+    >
+      <span class="w-8 h-px bg-brand-border"></span> Servicios
+    </h2>
+    <h3
+      class="text-4xl md:text-6xl font-bold tracking-tight text-white leading-tight max-w-2xl"
+    >
+      Soluciones digitales de <span class="text-gradient">alta fidelidad</span>.
+    </h3>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+    {
+      services.map((service) => (
+        <div class="group p-10 rounded-3xl glass hover:bg-white/5 transition-all duration-500 flex flex-col gap-6 border-brand-card/50 border-2 hover:border-brand-border">
+          <div class="w-14 h-14 bg-white/5 rounded-2xl flex items-center justify-center group-hover:bg-accent group-hover:text-accent-foreground transition-all duration-500">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="28"
+              height="28"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d={service.icon} />
+            </svg>
+          </div>
+          <h4 class="text-2xl font-bold text-white transition-colors duration-300">
+            {service.title}
+          </h4>
+          <p class="text-zinc-400 leading-relaxed font-medium">
+            {service.description}
+          </p>
+        </div>
+      ))
+    }
+  </div>
+</section>

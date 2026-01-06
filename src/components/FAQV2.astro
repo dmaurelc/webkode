@@ -1,0 +1,105 @@
+---
+const faqs = [
+  {
+    question: "¿Qué stack tecnológico utilizan?",
+    answer:
+      "Nuestro stack preferido es el 'Modern JAMstack': Astro para velocidad, TailwindCSS para estilos, React para interactividad y Vercel/Netlify para despliegue global.",
+  },
+  {
+    question: "¿El diseño es responsive?",
+    answer:
+      "Absolutamente. Adoptamos una filosofía 'Mobile First', asegurando que la experiencia sea impecable tanto en un iPhone como en un monitor 4K ultrawide.",
+  },
+  {
+    question: "¿Incluyen CMS para gestionar contenido?",
+    answer:
+      "Sí. Integramos CMS headless como Sanity, Strapi o Keystone, permitiéndote editar textos e imágenes sin tocar una sola línea de código.",
+  },
+  {
+    question: "¿Cómo manejan el SEO?",
+    answer:
+      "El SEO técnico está integrado desde la base: HTML semántico, tiempos de carga ultra-rápidos, meta-etiquetas dinámicas y sitemaps automáticos.",
+  },
+];
+---
+
+<section class="py-24 px-4 bg-black border-t border-white/5">
+  <div class="max-w-6xl mx-auto">
+    <div class="mb-16 text-center">
+      <span
+        class="text-accent text-xs font-bold tracking-widest uppercase mb-4 block"
+        >Dudas Comunes</span
+      >
+      <h2 class="text-3xl md:text-5xl font-bold text-white mb-6">
+        Preguntas <span class="text-zinc-500">Frecuentes.</span>
+      </h2>
+    </div>
+
+    <div
+      class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4"
+      id="faq-v2-container"
+    >
+      {
+        faqs.map((faq, i) => (
+          <div class="group border-b border-white/10 pb-8 pt-4 cursor-pointer faq-item-v2">
+            <div class="flex justify-between items-start transition-colors">
+              <h3 class="text-xl text-white font-medium pr-8 group-hover:text-accent transition-colors select-none normal-case!">
+                {faq.question}
+              </h3>
+              <span class="text-zinc-500 text-xl group-hover:text-accent transition-colors faq-toggle-icon">
+                +
+              </span>
+            </div>
+            <div class="grid grid-rows-[0fr] transition-all duration-300 ease-out faq-answer-wrapper">
+              <p class="text-zinc-400 mt-4 leading-relaxed text-sm overflow-hidden opacity-0 transition-opacity duration-300 faq-answer">
+                {faq.answer}
+              </p>
+            </div>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>
+
+<script>
+  function setupFAQV2() {
+    const container = document.getElementById("faq-v2-container");
+    if (!container) return;
+
+    const items = container.querySelectorAll(".faq-item-v2");
+
+    items.forEach((item) => {
+      item.addEventListener("click", () => {
+        const isActive = item.getAttribute("data-active") === "true";
+
+        // Toggle current
+        const newState = !isActive;
+        item.setAttribute("data-active", String(newState));
+
+        const answerWrapper = item.querySelector(".faq-answer-wrapper");
+        const answer = item.querySelector(".faq-answer");
+        const icon = item.querySelector(".faq-toggle-icon");
+
+        if (newState) {
+          answerWrapper?.classList.remove("grid-rows-[0fr]");
+          answerWrapper?.classList.add("grid-rows-[1fr]");
+          answer?.classList.remove("opacity-0");
+          answer?.classList.add("opacity-100");
+          if (icon) icon.textContent = "-";
+          icon?.classList.add("text-accent");
+        } else {
+          answerWrapper?.classList.remove("grid-rows-[1fr]");
+          answerWrapper?.classList.add("grid-rows-[0fr]");
+          answer?.classList.remove("opacity-100");
+          answer?.classList.add("opacity-0");
+          if (icon) icon.textContent = "+";
+          icon?.classList.remove("text-accent");
+        }
+      });
+    });
+  }
+
+  setupFAQV2();
+  document.addEventListener("astro:page-load", setupFAQV2);
+</script>

@@ -1,43 +1,74 @@
-# Astro Starter Kit: Minimal
+# Webkode | Diseño y Desarrollo Web Premium
 
-```sh
-npm create astro@latest -- --template minimal
-```
+![Webkode Banner](https://via.placeholder.com/1200x400.png?text=Webkode+Architectural+Web+Design)
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+> **Arquitectura Digital & Diseño Minimalista.**
+> Webkode es una agencia boutique especializada en crear experiencias web de alto impacto, combinando estética brutalista/arquitectónica con el máximo rendimiento técnico.
 
-## 🚀 Project Structure
+<div align="center">
 
-Inside of your Astro project, you'll see the following folders and files:
+![Astro](https://img.shields.io/badge/astro-%232C2033.svg?style=for-the-badge&logo=astro&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/tailwindcss-%2338B2AC.svg?style=for-the-badge&logo=tailwind-css&logoColor=white)
+![TypeScript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)
+![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
+
+</div>
+
+## 💎 Características Principales
+
+### 🎨 Diseño "Architectural Solid"
+
+- **Estética Oscura Sólida**: Fondos `bg-black` puros sin transparencias borrosas excesivas, enfocados en el contraste.
+- **Tipografía y Grilla**: Uso de fuentes modernas (Inter/Satoshi) y layouts estructurados (Masonry/Grid).
+- **Interacciones Micro**: Animaciones sutiles en inputs, botones y bordes.
+
+### 🛠 Ingeniería Web
+
+- **Astro 5.0**: Renderizado estático por defecto para velocidad máxima (Islands Architecture).
+- **Tailwind CSS v4**: Motor de estilos de última generación, optimizado y sin configuración compleja.
+- **Componentes Modulares**: UI kit reutilizable (`ui/Label`, `ui/Input`, `ui/Combobox`) para consistencia.
+- **Formularios Avanzados**: Validaciones integradas y UX mejorada (Combobox personalizado).
+- **Responsive First**: Adaptabilidad fluida desde móviles hasta pantallas 4K.
+
+## 🚀 Tecnologías
+
+- **Astro 5.0**: Framework web extremadamente rápido orientado a contenido.
+- **Tailwind CSS 4.0**: Estilizado moderno y eficiente.
+- **Framer Motion**: Animaciones fluidas y premium.
+- **TypeScript**: Estabilidad y robustez en el código.
+
+## 📂 Estructura del Proyecto
 
 ```text
 /
-├── public/
+├── .agent/             # Cerebro de la IA (Roles, Workflows)
+│   ├── team/           # Definición de agentes
+│   └── reports/        # Reportes de estado y auditorías
+├── docs/               # Documentación viva (PRD, Roadmaps)
+├── public/             # Assets estáticos (fuentes, imágenes)
 ├── src/
-│   └── pages/
-│       └── index.astro
+│   ├── components/     # Bloques de construcción (UI, Secciones)
+│   │   ├── ui/         # Átomos de diseño (Buttons, Inputs)
+│   ├── layouts/        # Layouts maestros
+│   ├── pages/          # Rutas del sitio
+│   └── styles/         # CSS global
 └── package.json
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## 🧞 Comandos
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+| Comando           | Acción                             |
+| :---------------- | :--------------------------------- |
+| `npm install`     | Instala las dependencias           |
+| `npm run dev`     | Inicia el servidor de desarrollo   |
+| `npm run build`   | Construye el sitio para producción |
+| `npm run preview` | Previsualiza el build localmente   |
 
-Any static assets, like images, can be placed in the `public/` directory.
+## 🧠 Equipo de Agentes IA
 
-## 🧞 Commands
+Este proyecto es mantenido por un equipo de agentes autónomos coordinados:
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- **Orchestrator**: Gestión de proyecto y coherencia.
+- **Architect**: Estructura de código y patrones.
+- **Designer**: UI/UX y sistema de diseño.
+- **Tech Lead**: Calidad de código y performance.

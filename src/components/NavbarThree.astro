@@ -1,0 +1,296 @@
+---
+const links = [
+  { name: "Servicios", href: "#servicios" },
+  { name: "Portafolio", href: "#proyectos" },
+  { name: "FAQ", href: "#faq" },
+  { name: "Contacto", href: "#agendar" },
+];
+---
+
+<!-- 
+  NAVBAR THREE (V6.2): REFINED FULL-SCREEN OFF-CANVAS
+  - Logo always on the right on mobile.
+  - "X" Close button matching visual position of trigger.
+  - Corrected translation logic for seamless slide-in.
+-->
+<header
+  id="n3-header"
+  class="fixed top-0 left-0 w-full h-20 bg-black/95 backdrop-blur-md border-b border-white/5 flex items-center px-6 md:px-10 z-[9998] transition-all duration-500"
+>
+  <div
+    class="flex items-center justify-between w-full h-full lg:grid lg:grid-cols-3"
+  >
+    <!-- LEFT: Trigger (Mobile) -->
+    <div class="flex items-center">
+      <button
+        id="n3-trigger"
+        class="lg:hidden h-12 w-12 flex flex-col items-center justify-center gap-1.5 bg-accent text-black active:scale-95 transition-transform"
+        aria-label="Open Menu"
+      >
+        <span class="w-6 h-0.5 bg-current transition-all"></span>
+        <span class="w-4 h-0.5 bg-current ml-auto transition-all"></span>
+        <span class="w-6 h-0.5 bg-current transition-all"></span>
+      </button>
+
+      <!-- Desktop Logo -->
+      <a href="/" class="hidden lg:flex items-center gap-3 group">
+        <div
+          class="w-8 h-8 bg-white flex items-center justify-center group-hover:bg-accent transition-colors duration-500"
+        >
+          <span class="text-black font-black text-sm">W</span>
+        </div>
+        <span class="text-xl font-black tracking-tighter text-white uppercase"
+          >webkode</span
+        >
+      </a>
+    </div>
+
+    <!-- CENTER: Desktop Nav -->
+    <nav class="hidden lg:flex items-center justify-center gap-10">
+      {
+        links.map((link) => (
+          <a
+            href={link.href}
+            class="text-[10px] uppercase tracking-[0.3em] font-black text-zinc-500 hover:text-white transition-all hover:tracking-[0.4em]"
+          >
+            {link.name}
+          </a>
+        ))
+      }
+    </nav>
+
+    <!-- RIGHT: Logo (Mobile) / CTA (Desktop) -->
+    <div class="flex items-center justify-end">
+      <!-- Mobile Logo (ALWAYS RIGHT) -->
+      <a href="/" class="lg:hidden flex items-center gap-2">
+        <div class="w-7 h-7 bg-white flex items-center justify-center">
+          <span class="text-black font-black text-xs">W</span>
+        </div>
+        <span class="text-lg font-black tracking-tighter text-white uppercase"
+          >webkode</span
+        >
+      </a>
+
+      <!-- Desktop CTA -->
+      <a
+        href="#agendar"
+        class="hidden lg:flex h-20 items-center px-10 bg-white hover:bg-accent text-black transition-colors font-black text-[11px] uppercase tracking-[0.3em]"
+      >
+        Start Project
+      </a>
+    </div>
+  </div>
+</header>
+
+<!-- FULL-SCREEN OFF-CANVAS -->
+<div
+  id="n3-offcanvas"
+  class="fixed inset-0 z-[10000] invisible pointer-events-none overflow-hidden"
+>
+  <!-- Backdrop (Blur / Dim) -->
+  <div
+    id="n3-backdrop"
+    class="absolute inset-0 bg-black/90 opacity-0 transition-opacity duration-500"
+  >
+  </div>
+
+  <!-- Content Panel (Slides from left) -->
+  <div
+    id="n3-panel"
+    class="absolute inset-0 bg-black flex flex-col pointer-events-auto transform transition-transform duration-500 ease-[cubic-bezier(0.77,0,0.175,1)]"
+  >
+    <!-- Mirror Header inside Menu for consistent UI -->
+    <div
+      class="h-20 flex items-center px-6 md:px-10 border-b border-white/5 bg-black"
+    >
+      <!-- Close Trigger (X) -->
+      <button
+        id="n3-close"
+        class="h-12 w-12 flex items-center justify-center bg-accent text-black active:scale-95 transition-transform"
+        aria-label="Close Menu"
+      >
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="24"
+          height="24"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="3"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          ><path d="M18 6 6 18"></path><path d="m6 6 12 12"></path></svg
+        >
+      </button>
+
+      <div class="flex-1 lg:hidden"></div>
+
+      <!-- Menu Logo (ALWAYS RIGHT) -->
+      <div class="flex items-center">
+        <a href="/" class="flex items-center gap-2">
+          <div class="w-7 h-7 bg-white flex items-center justify-center">
+            <span class="text-black font-black text-xs">W</span>
+          </div>
+          <span class="text-lg font-black tracking-tighter text-white uppercase"
+            >webkode</span
+          >
+        </a>
+      </div>
+    </div>
+
+    <!-- Navigation List -->
+    <div class="flex flex-col pt-12 px-10">
+      <div class="mb-12">
+        <span
+          class="text-[10px] font-black tracking-[0.5em] uppercase text-zinc-800"
+          >Index</span
+        >
+      </div>
+
+      <nav class="flex flex-col gap-6">
+        {
+          links.map((link, i) => (
+            <a
+              href={link.href}
+              class="n3-link group flex items-center justify-between py-5 border-b border-white/5"
+            >
+              <div class="flex items-baseline gap-6">
+                <span class="text-[10px] font-mono text-accent opacity-40">
+                  0{i + 1}
+                </span>
+                <span class="text-5xl font-black text-white uppercase tracking-tighter transition-all duration-500 group-hover:pl-4">
+                  {link.name}
+                </span>
+              </div>
+              <div class="opacity-0 group-hover:opacity-100 transition-opacity text-accent">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="28"
+                  height="28"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <>
+                    <path d="M5 12h14" />
+                    <path d="m12 5 7 7-7 7" />
+                  </>
+                </svg>
+              </div>
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+
+    <!-- Footer Info -->
+    <div class="mt-auto py-12 px-10 flex flex-col gap-8 bg-zinc-950/50">
+      <div class="grid grid-cols-2 gap-10">
+        <div class="flex flex-col gap-3">
+          <span
+            class="text-[9px] font-black tracking-widest text-zinc-700 uppercase"
+            >Studio</span
+          >
+          <span
+            class="text-white text-[11px] font-bold uppercase tracking-widest opacity-70"
+            >Los Andes, Chile</span
+          >
+        </div>
+        <div class="flex flex-col gap-3">
+          <span
+            class="text-[9px] font-black tracking-widest text-zinc-700 uppercase"
+            >33°26'S</span
+          >
+          <span
+            class="text-white text-[11px] font-bold uppercase tracking-widest opacity-70"
+            >70°39'W</span
+          >
+        </div>
+      </div>
+
+      <div
+        class="flex justify-between items-center border-t border-white/5 pt-8"
+      >
+        <div class="flex gap-8">
+          {
+            ["IG", "LI", "GH"].map((s) => (
+              <a
+                href="#"
+                class="text-[10px] font-black text-zinc-500 hover:text-accent transition-colors"
+              >
+                /{s}
+              </a>
+            ))
+          }
+        </div>
+        <span class="text-[9px] font-mono text-zinc-600">WEBKODE V2026</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  const trigger = document.getElementById("n3-trigger");
+  const close = document.getElementById("n3-close");
+  const offcanvas = document.getElementById("n3-offcanvas");
+  const backdrop = document.getElementById("n3-backdrop");
+  const panel = document.getElementById("n3-panel");
+  const links = document.querySelectorAll(".n3-link");
+
+  let isOpen = false;
+
+  function toggle() {
+    if (!offcanvas || !backdrop || !panel) return;
+
+    isOpen = !isOpen;
+
+    if (isOpen) {
+      offcanvas.classList.remove("invisible");
+      offcanvas.classList.add("pointer-events-auto");
+      backdrop.classList.add("opacity-100");
+      panel.style.transform = "translateX(0)";
+      document.body.style.overflow = "hidden";
+    } else {
+      backdrop.classList.remove("opacity-100");
+      panel.style.transform = "translateX(-100%)";
+      document.body.style.overflow = "";
+
+      setTimeout(() => {
+        if (!isOpen) {
+          offcanvas.classList.add("invisible");
+          offcanvas.classList.remove("pointer-events-auto");
+        }
+      }, 500);
+    }
+  }
+
+  trigger?.addEventListener("click", toggle);
+  close?.addEventListener("click", toggle);
+  backdrop?.addEventListener("click", toggle);
+  links.forEach((l) =>
+    l.addEventListener("click", () => {
+      if (isOpen) toggle();
+    })
+  );
+
+  // Scroll Resize
+  window.addEventListener("scroll", () => {
+    const h = document.getElementById("n3-header");
+    if (h && !isOpen) {
+      h.classList.toggle("h-16", window.scrollY > 80);
+      h.classList.toggle("bg-black", window.scrollY > 80);
+      h.classList.toggle("h-20", window.scrollY <= 80);
+    }
+  });
+</script>
+
+<style>
+  /* Extra smooth bezier */
+  #n3-panel {
+    box-shadow: 20px 0 100px rgba(0, 0, 0, 1);
+    will-change: transform;
+  }
+</style>

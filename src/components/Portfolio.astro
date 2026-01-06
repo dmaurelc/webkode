@@ -1,0 +1,127 @@
+---
+const projects = [
+  {
+    title: "SOLOX SPACE MINING",
+    category: "Tecnología Espacial",
+    image: "/assets/porfolio/soloxspace.avif",
+    link: "https://soloxspace.com/",
+    description:
+      "Plataforma de ingeniería avanzada para la detección de minerales críticos en el espacio y la Tierra.",
+  },
+  {
+    title: "REDICOM CIBERSEGURIDAD",
+    category: "Seguridad IT",
+    image: "/assets/porfolio/redicom.avif",
+    link: "https://redicom.cl/",
+    description:
+      "Soluciones robustas de ciberseguridad corporativa con más de 18 años de trayectoria en el mercado chileno.",
+  },
+  {
+    title: "FLAITER AI",
+    category: "Web App / IA",
+    image: "/assets/porfolio/flaiter.avif",
+    link: "https://flaiter.netlify.app/",
+    description:
+      "Traductor cultural impulsado por inteligencia artificial para decodificar modismos y jerga local.",
+  },
+];
+---
+
+<section
+  id="proyectos"
+  class="py-32 px-8 bg-brand-bg border-t border-brand-border/30"
+>
+  <div class="max-w-9xl mx-auto">
+    <div
+      class="flex flex-col md:flex-row justify-between items-start mb-32 gap-8"
+    >
+      <div>
+        <div class="flex items-center gap-4 mb-8 md:mb-10">
+          <div class="w-8 md:w-12 h-px bg-accent"></div>
+          <span
+            class="text-xs font-light tracking-[0.4em] uppercase text-brand-muted"
+            >Trabajos Seleccionados</span
+          >
+        </div>
+        <h3
+          class="text-4xl md:text-6xl font-bold tracking-tighter text-white leading-[0.85] uppercase"
+        >
+          PROYECTOS <br class="md:flex hidden" />
+          <span class="text-accent">Y CASOS.</span>
+        </h3>
+      </div>
+      <a
+        href="#"
+        class="text-xs font-black tracking-widest uppercase text-white hover:text-accent transition-all group pt-4 border-t border-brand-border"
+      >
+        Ver todos los casos
+      </a>
+    </div>
+
+    <!-- Stacked Scroll Layout -->
+    <div class="flex flex-col gap-0">
+      {
+        projects.map((project, index) => (
+          <div
+            class="sticky top-24 w-full bg-brand-bg pt-12 pb-12 border-t border-brand-border/50"
+            style={`z-index: ${index + 10};`}
+          >
+            <a
+              href={project.link}
+              target="_blank"
+              aria-label={project.title}
+              class="group grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
+            >
+              <div class="relative overflow-hidden aspect-video">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
+                />
+                <div class="absolute inset-0 border border-brand-border/30 group-hover:border-accent/30 transition-colors pointer-events-none" />
+              </div>
+
+              <div class="flex flex-col gap-6">
+                <div>
+                  <span class="text-xs font-light tracking-[0.2em] uppercase text-accent mb-4 block">
+                    {project.category} / 0{index + 1}
+                  </span>
+                  <h4 class="text-3xl md:text-5xl font-bold text-white tracking-tighter leading-none mb-6">
+                    {project.title}
+                  </h4>
+                  <p class="text-brand-muted text-lg max-w-md font-normal leading-relaxed">
+                    {project.description}
+                  </p>
+                </div>
+
+                <div class="flex items-center gap-4 pt-4">
+                  <div class="w-10 h-10 border border-white/10 flex items-center justify-center group-hover:border-accent group-hover:text-accent transition-colors">
+                    <svg
+                      xmlns="http://www.w3.org/2000/svg"
+                      width="18"
+                      height="18"
+                      viewBox="0 0 24 24"
+                      fill="none"
+                      stroke="currentColor"
+                      stroke-width="2"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    >
+                      <>
+                        <path d="M5 12h14" />
+                        <path d="m12 5 7 7-7 7" />
+                      </>
+                    </svg>
+                  </div>
+                  <span class="text-[10px] font-light tracking-widest uppercase text-white/40 group-hover:text-white transition-colors">
+                    Ir al sitio web
+                  </span>
+                </div>
+              </div>
+            </a>
+          </div>
+        ))
+      }
+    </div>
+  </div>
+</section>

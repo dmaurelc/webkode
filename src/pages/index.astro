@@ -1,16 +1,37 @@
 ---
-
+import Layout from "../layouts/Layout.astro";
+import HeaderV4 from "../components/HeaderV4.astro";
+import HeroV2 from "../components/HeroV2.astro";
+import NewServices from "../components/NewServices.astro";
+import Portfolio from "../components/Portfolio.astro";
+import LogoTicker from "../components/LogoTicker.astro";
+import FAQ from "../components/FAQ.astro";
+import SchedulerV3 from "../components/SchedulerV3.astro";
+import Footer from "../components/Footer.astro";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Agencia de Diseño y Desarrollo Web a Medida">
+  <HeaderV4 />
+  <main
+    class="relative bg-black border-x border-white/5 mx-auto max-w-[1920px]"
+  >
+    <HeroV2 />
+    <div class="border-t border-white/5">
+      <LogoTicker />
+    </div>
+    <div class="border-t border-white/5">
+      <NewServices />
+    </div>
+    <div class="border-t border-white/5">
+      <Portfolio />
+    </div>
+    <div class="border-t border-white/5">
+      <FAQ />
+    </div>
+    <div class="border-t border-white/5">
+      <SchedulerV3 />
+    </div>
+  </main>
+
+  <Footer />
+</Layout>
