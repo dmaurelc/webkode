@@ -10,11 +10,9 @@ export const GET: APIRoute = async ({ params }) => {
 
   // Read fonts from local files to avoid build failures on Dokploy
   const fontsDir = path.resolve(process.cwd(), "public/fonts");
-  const fontMedium = fs.readFileSync(
-    path.join(fontsDir, "Satoshi-Medium.woff2")
-  );
-  const fontBold = fs.readFileSync(path.join(fontsDir, "Satoshi-Bold.woff2"));
-  const fontBlack = fs.readFileSync(path.join(fontsDir, "Satoshi-Black.woff2"));
+  const fontMedium = fs.readFileSync(path.join(fontsDir, "Satoshi-Medium.otf"));
+  const fontBold = fs.readFileSync(path.join(fontsDir, "Satoshi-Bold.otf"));
+  const fontBlack = fs.readFileSync(path.join(fontsDir, "Satoshi-Black.otf"));
 
   const svg = await satori(
     {
@@ -26,6 +24,7 @@ export const GET: APIRoute = async ({ params }) => {
             props: {
               children: decodedTitle,
               style: {
+                fontFamily: "Satoshi",
                 fontSize: 80,
                 fontWeight: 900,
                 color: "#FFFFFF",
@@ -39,6 +38,7 @@ export const GET: APIRoute = async ({ params }) => {
             props: {
               children: "WEBKODE.CL",
               style: {
+                fontFamily: "Satoshi",
                 fontSize: 24,
                 fontWeight: 500,
                 color: "#D9FF00", // accent color
