@@ -11,35 +11,70 @@ const {
   title,
   description = "Elevamos el estándar de la web moderna. Creamos plataformas digitales de alta gama con ingeniería de precisión y estética de autor.",
   type = "website",
-} = Astro.props;
-
+  image = "/assets/webkode.avif",
+  canonicalURL = Astro.site
+    ? new URL(Astro.url.pathname, Astro.site)
+    : new URL(Astro.url.pathname, Astro.url.origin),
 const siteTitle = title
   ? title.includes("Webkode")
     ? title
     : `${title} | Webkode`
-  : "Webkode | Diseño y Desarrollo Web Premium";
-const ogTitle = title || "Diseño y Desarrollo Web Premium";
+  : "Webkode | Agencia de Diseño y Desarrollo Web Premium";
 
-const {
-  image = `/og/${encodeURIComponent(ogTitle)}.png`,
-  canonicalURL = Astro.site
-    ? new URL(Astro.url.pathname, Astro.site)
-    : new URL(Astro.url.pathname, Astro.url.origin),
-} = Astro.props;
+const resolvedImage = new URL(image, Astro.site || Astro.url.origin).toString();
 
-// JSON-LD para Organización
-const jsonLd = {
-  "@context": "https://schema.org",
-  "@type": "Organization",
-  name: "Webkode",
-  url: "https://webkode.cl",
-  logo: "https://webkode.cl/logo.png",
-  description: description,
-  sameAs: [
-    "https://twitter.com/webkode",
-    "https://linkedin.com/company/webkode",
-  ],
-};
+// JSON-LD robusto
+const jsonLd = [
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "@id": "https://webkode.cl/#organization",
+    name: "Webkode",
+    url: "https://webkode.cl",
+    logo: {
+      "@type": "ImageObject",
+      url: "https://webkode.cl/favicon.svg",
+    },
+    description: description,
+    sameAs: [
+      "https://www.linkedin.com/in/dmaurelc/",
+      "https://www.instagram.com/dmaurel.cl/",
+      "https://github.com/dmaurelc/",
+    ],
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "WebSite",
+    "@id": "https://webkode.cl/#website",
+    handle: "https://webkode.cl/",
+    name: "Webkode",
+    description: description,
+    publisher: { "@id": "https://webkode.cl/#organization" },
+    inLanguage: "es",
+  },
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    name: "Webkode",
+    image: resolvedImage,
+    "@id": "https://webkode.cl/",
+    url: "https://webkode.cl",
+    telephone: "",
+    address: {
+      "@type": "PostalAddress",
+      streetAddress: "",
+      addressLocality: "Chile",
+      postalCode: "",
+      addressCountry: "CL",
+    },
+    openingHoursSpecification: {
+      "@type": "OpeningHoursSpecification",
+      dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      opens: "09:00",
+      closes: "18:00",
+    },
+  },
+];
 ---
 
 <!-- Global Metadata -->
@@ -55,21 +90,25 @@ const jsonLd = {
 <title>{siteTitle}</title>
 <meta name="title" content={siteTitle} />
 <meta name="description" content={description} />
+<meta name="robots" content="index, follow" />
 
-<meta
-  property="og:image"
-  content={new URL(image, Astro.site || Astro.url.origin)}
-/>
+<!-- Open Graph / Facebook -->
+<meta property="og:type" content={type} />
+<meta property="og:url" content={Astro.url} />
+<meta property="og:title" content={siteTitle} />
+<meta property="og:description" content={description} />
+<meta property="og:image" content={resolvedImage} />
+<meta property="og:site_name" content="Webkode" />
 
 <!-- Twitter -->
 <meta property="twitter:card" content="summary_large_image" />
 <meta property="twitter:url" content={Astro.url} />
 <meta property="twitter:title" content={siteTitle} />
 <meta property="twitter:description" content={description} />
-<meta
-  property="twitter:image"
-  content={new URL(image, Astro.site || Astro.url.origin)}
-/>
+<meta property="twitter:image" content={resolvedImage} />
+<meta property="twitter:site" content="@dmaurelc" />
+<meta property="twitter:creator" content="@dmaurelc" />
+<meta property="twitter:domain" content="webkode.cl" />
 
 <!-- JSON-LD -->
 <script
