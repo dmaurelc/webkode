@@ -130,82 +130,92 @@ const links = [
 </header>
 
 <script>
-  const header = document.getElementById("header-v4");
-  const trigger = document.getElementById("v4-mobile-trigger");
-  const menu = document.getElementById("v4-mobile-menu");
-  const m1 = document.getElementById("v4-m-1");
-  const m2 = document.getElementById("v4-m-2");
-  const m3 = document.getElementById("v4-m-3");
-  const mLinks = document.querySelectorAll(".v4-m-link");
+  function initHeaderV4() {
+    const header = document.getElementById("header-v4");
+    const trigger = document.getElementById("v4-mobile-trigger");
+    const menu = document.getElementById("v4-mobile-menu");
+    const m1 = document.getElementById("v4-m-1");
+    const m2 = document.getElementById("v4-m-2");
+    const m3 = document.getElementById("v4-m-3");
+    const mLinks = document.querySelectorAll(".v4-m-link");
 
-  let isMenuOpen = false;
+    let isMenuOpen = false;
 
-  function toggleMenu() {
-    isMenuOpen = !isMenuOpen;
+    if (!trigger || !menu) return;
 
-    if (menu && m1 && m2 && m3) {
-      if (isMenuOpen) {
-        menu.classList.remove("opacity-0", "invisible", "translate-y-4");
-        menu.classList.add("opacity-100", "translate-y-0");
+    function toggleMenu() {
+      isMenuOpen = !isMenuOpen;
 
-        if (m1 && m2 && m3) {
-          m1.style.top = "50%";
-          m1.style.transform = "translateY(-50%) rotate(45deg)";
+      if (menu && m1 && m2 && m3) {
+        if (isMenuOpen) {
+          menu.classList.remove("opacity-0", "invisible", "translate-y-4");
+          menu.classList.add("opacity-100", "translate-y-0");
 
-          m2.style.opacity = "0";
-          m2.style.transform = "translateY(-50%) scale(0)";
+          if (m1 && m2 && m3) {
+            m1.style.top = "50%";
+            m1.style.transform = "translateY(-50%) rotate(45deg)";
 
-          m3.style.bottom = "auto";
-          m3.style.top = "50%";
-          m3.style.transform = "translateY(-50%) rotate(-45deg)";
-        }
-      } else {
-        menu.classList.add("opacity-0", "invisible", "translate-y-4");
-        menu.classList.remove("opacity-100", "translate-y-0");
+            m2.style.opacity = "0";
+            m2.style.transform = "translateY(-50%) scale(0)";
 
-        if (m1 && m2 && m3) {
-          m1.style.top = "0";
-          m1.style.transform = "translateY(0) rotate(0)";
+            m3.style.bottom = "auto";
+            m3.style.top = "50%";
+            m3.style.transform = "translateY(-50%) rotate(-45deg)";
+          }
+        } else {
+          menu.classList.add("opacity-0", "invisible", "translate-y-4");
+          menu.classList.remove("opacity-100", "translate-y-0");
 
-          m2.style.opacity = "1";
-          m2.style.transform = "translateY(-50%) scale(1)";
+          if (m1 && m2 && m3) {
+            m1.style.top = "0";
+            m1.style.transform = "translateY(0) rotate(0)";
 
-          m3.style.top = "auto";
-          m3.style.bottom = "0";
-          m3.style.transform = "translateY(0) rotate(0)";
+            m2.style.opacity = "1";
+            m2.style.transform = "translateY(-50%) scale(1)";
+
+            m3.style.top = "auto";
+            m3.style.bottom = "0";
+            m3.style.transform = "translateY(0) rotate(0)";
+          }
         }
       }
     }
+
+    trigger?.addEventListener("click", toggleMenu);
+    mLinks.forEach((link) =>
+      link.addEventListener("click", () => isMenuOpen && toggleMenu())
+    );
+
+    // Scroll effect
+    const scrollHandler = () => {
+      if (header) {
+        if (window.scrollY > 50) {
+          header.classList.add("top-4");
+          header.classList.remove("top-6");
+          header.querySelector("div")?.classList.add("bg-black/80", "h-16");
+          header.querySelector("div")?.classList.remove("bg-black/40", "h-20");
+        } else {
+          header.classList.add("top-6");
+          header.classList.remove("top-4");
+          header.querySelector("div")?.classList.add("bg-black/40", "h-20");
+          header.querySelector("div")?.classList.remove("bg-black/80", "h-16");
+        }
+      }
+    };
+
+    window.addEventListener("scroll", scrollHandler);
+
+    // Close on outside click
+    const clickHandler = (e: MouseEvent) => {
+      if (isMenuOpen && !header?.contains(e.target as Node)) {
+        toggleMenu();
+      }
+    };
+    document.addEventListener("click", clickHandler);
   }
 
-  trigger?.addEventListener("click", toggleMenu);
-  mLinks.forEach((link) =>
-    link.addEventListener("click", () => isMenuOpen && toggleMenu())
-  );
-
-  // Scroll effect
-  window.addEventListener("scroll", () => {
-    if (header) {
-      if (window.scrollY > 50) {
-        header.classList.add("top-4");
-        header.classList.remove("top-6");
-        header.querySelector("div")?.classList.add("bg-black/80", "h-16");
-        header.querySelector("div")?.classList.remove("bg-black/40", "h-20");
-      } else {
-        header.classList.add("top-6");
-        header.classList.remove("top-4");
-        header.querySelector("div")?.classList.add("bg-black/40", "h-20");
-        header.querySelector("div")?.classList.remove("bg-black/80", "h-16");
-      }
-    }
-  });
-
-  // Close on outside click
-  document.addEventListener("click", (e) => {
-    if (isMenuOpen && !header?.contains(e.target as Node)) {
-      toggleMenu();
-    }
-  });
+  initHeaderV4();
+  document.addEventListener("astro:page-load", initHeaderV4);
 </script>
 
 <style>
