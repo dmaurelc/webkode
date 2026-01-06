@@ -1,15 +1,20 @@
 import satori from "satori";
 import { Resvg } from "@resvg/resvg-js";
 import type { APIRoute } from "astro";
+import fs from "node:fs";
+import path from "node:path";
 
 export const GET: APIRoute = async ({ params }) => {
   const { title } = params;
   const decodedTitle = decodeURIComponent(title || "Webkode");
 
-  // Fetch a font from a CDN
-  const fontFile = await fetch(
-    "https://api.fontshare.com/v2/fonts/download/satoshi@900"
-  ).then((res) => res.arrayBuffer());
+  // Read fonts from local files to avoid build failures on Dokploy
+  const fontsDir = path.resolve(process.cwd(), "public/fonts");
+  const fontMedium = fs.readFileSync(
+    path.join(fontsDir, "Satoshi-Medium.woff2")
+  );
+  const fontBold = fs.readFileSync(path.join(fontsDir, "Satoshi-Bold.woff2"));
+  const fontBlack = fs.readFileSync(path.join(fontsDir, "Satoshi-Black.woff2"));
 
   const svg = await satori(
     {
@@ -35,7 +40,7 @@ export const GET: APIRoute = async ({ params }) => {
               children: "WEBKODE.CL",
               style: {
                 fontSize: 24,
-                fontWeight: 400,
+                fontWeight: 500,
                 color: "#D9FF00", // accent color
                 letterSpacing: "0.4em",
               },
@@ -64,7 +69,19 @@ export const GET: APIRoute = async ({ params }) => {
       fonts: [
         {
           name: "Satoshi",
-          data: fontFile,
+          data: fontMedium,
+          weight: 500,
+          style: "normal",
+        },
+        {
+          name: "Satoshi",
+          data: fontBold,
+          weight: 700,
+          style: "normal",
+        },
+        {
+          name: "Satoshi",
+          data: fontBlack,
           weight: 900,
           style: "normal",
         },
