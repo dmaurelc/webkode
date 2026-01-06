@@ -1,6 +1,6 @@
 # Webkode | Diseño y Desarrollo Web Premium
 
-![Webkode Banner](https://via.placeholder.com/1200x400.png?text=Webkode+Architectural+Web+Design)
+![Webkode Banner](./public/assets/webkode.avif)
 
 > **Arquitectura Digital & Diseño Minimalista.**
 > Webkode es una agencia boutique especializada en crear experiencias web de alto impacto, combinando estética brutalista/arquitectónica con el máximo rendimiento técnico.

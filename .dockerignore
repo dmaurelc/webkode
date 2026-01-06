@@ -1,0 +1,11 @@
+node_modules
+.git
+.agents
+.cursor
+dist
+.vscode
+.gemini
+.github
+*.log
+.env
+.DS_Store

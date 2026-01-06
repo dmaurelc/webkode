@@ -43,13 +43,41 @@ const serviceOptions = [
 
     <!-- Architectural Form -->
     <div class="border border-white/10 bg-black/50 backdrop-blur-sm">
-      <form class="grid grid-cols-1 md:grid-cols-2">
+      <form
+        action="https://api.web3forms.com/submit"
+        method="POST"
+        class="grid grid-cols-1 md:grid-cols-2"
+      >
+        <!-- Web3Forms Config -->
+        <input
+          type="hidden"
+          name="access_key"
+          value="2a3feaee-c6b5-47fb-9fa5-88e28ee0dfd9"
+        />
+        <input
+          type="hidden"
+          name="subject"
+          value="Nueva Solicitud de Proyecto - Webkode"
+        />
+        <input type="hidden" name="from_name" value="Webkode Contact Form" />
+        <input
+          type="checkbox"
+          name="botcheck"
+          class="hidden"
+          style="display: none;"
+        />
+
         <!-- Name -->
         <div
           class="p-6 md:p-8 border-b border-white/10 md:border-r group hover:bg-white/2 transition-colors"
         >
           <Label for="v3-name" required>01. Nombre</Label>
-          <Input id="v3-name" placeholder="Ej. Juan Pérez" required />
+          <Input
+            id="v3-name"
+            name="name"
+            placeholder="Ej. Juan Pérez"
+            required
+          />
         </div>
 
         <!-- Email -->
@@ -60,6 +88,7 @@ const serviceOptions = [
           <Input
             type="email"
             id="v3-email"
+            name="email"
             placeholder="hola@empresa.cl"
             required
           />
@@ -70,7 +99,12 @@ const serviceOptions = [
           class="p-6 md:p-8 border-b border-white/10 md:border-r group hover:bg-white/2 transition-colors"
         >
           <Label for="v3-phone">03. Teléfono</Label>
-          <Input type="tel" id="v3-phone" placeholder="+56 9 ..." />
+          <Input
+            type="tel"
+            id="v3-phone"
+            name="phone"
+            placeholder="+56 9 ..."
+          />
         </div>
 
         <!-- Service -->
@@ -80,6 +114,7 @@ const serviceOptions = [
           <Label for="v3-service" required>04. Servicio</Label>
           <Combobox
             id="v3-service"
+            name="service"
             required
             options={serviceOptions}
             placeholder="Seleccionar..."
@@ -93,6 +128,7 @@ const serviceOptions = [
           <Label for="v3-message" required>05. Detalles</Label>
           <Textarea
             id="v3-message"
+            name="message"
             rows="5"
             placeholder="Describe tu visión y requerimientos técnicos..."
             required
