@@ -14,6 +14,8 @@ content:
     type: collection
     path: src/content/projects
     format: frontmatter
+    view:
+      fields: [title, client, year, featured, order]
     fields:
       - name: title
         label: Título
