@@ -1,5 +1,6 @@
 ---
 import SEO from "../components/SEO.astro";
+import { ClientRouter } from "astro:transitions";
 import "../styles/global.css";
 
 interface Props {
@@ -15,6 +16,20 @@ const { title, description, image } = Astro.props;
 <html lang="es">
   <head>
     <SEO title={title} description={description} image={image} />
+    <ClientRouter />
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-0MKSW2XWQJ"
+    ></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-0MKSW2XWQJ");
+    </script>
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />

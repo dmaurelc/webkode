@@ -1,34 +1,17 @@
-# Walkthrough: Identidad Visual y Refinamientos Finales (v1.1.0)
+# Release 1.1.2 Walkthrough
 
-En este sprint final, hemos consolidado la identidad visual de Webkode e implementado mejoras críticas en la experiencia de usuario y la documentación del proyecto.
+## Summary
 
-## Cambios Implementados
+This release focuses on integrating Google Analytics and verifying the domain for Google Search Console to enhance SEO and user tracking capabilities.
 
-### 1. Nueva Identidad Visual
+## Changes
 
-Se ha seleccionado e implementado la variante de logotipo **"V4 Thin Sq Solid"**, que presenta un diseño arquitectónico minimalista con tres pilares isométricos calados en un cuadrado sólido.
+### 1. Analytics & SEO
 
-- **Logo en Navbar:** Implementado con soporte para estados hover (cambio de color a `accent`).
-- **Favicon:** Generado y configurado en `public/favicon.svg` para una presencia de marca coherente en el navegador.
+- **Google Analytics (GA4)**: Added the global site tag (`gtag.js`) to `src/layouts/Layout.astro` to track user interactions.
+- **Search Console**: Verified domain ownership by adding the required HTML file to the `public/` directory.
 
-### 2. Refinamiento del Menú Móvil
+### 2. Versioning
 
-Se ha rediseñado la animación del disparador del menú móvil (hamburguesa) para asegurar una transición geométrica perfecta hacia una "X" centrada, utilizando posicionamiento absoluto y transformaciones precisas.
-
-### 3. Actualización del Footer
-
-- **Limpieza de Contenido:** Eliminada la sección de "Recursos" para enfocarse en los links principales de navegación.
-- **Redes Sociales:** Actualizados los enlaces oficiales a LinkedIn, Instagram y GitHub.
-- **Branding:** Integración del nuevo logo y actualización de la versión a `v1.1.0`.
-
-### 4. Estabilidad y Código
-
-- **Correcciones de Linting:** Se corrigieron múltiples errores de sintaxis de Tailwind CSS en los componentes de FAQ.
-- **Limpieza:** Se eliminaron las páginas de demostración temporal (`LogoDemo.astro`).
-
-## Verificación Visual
-
-![Nuevo Logo Webkode](file:///Users/danielmc/Desktop/ProyectosAstro/webkode/public/favicon.svg)
-
-> [!NOTE]
-> El proyecto está ahora listo para su despliegue oficial con la identidad de marca finalizada.
+- **Package**: Bumped version to `1.1.2`.
+- **Footer**: Updated displayed version to `v1.1.2`.

@@ -6,9 +6,12 @@ import Textarea from "./ui/Textarea.astro";
 import Button from "./ui/Button.astro";
 
 const serviceOptions = [
-  { value: "web", label: "Arquitectura Web" },
-  { value: "software", label: "Software a Medida" },
-  { value: "branding", label: "Identidad Digital" },
+  { value: "web", label: "Desarrollo Web" },
+  { value: "ecommerce", label: "Ecommerce" },
+  { value: "directorio", label: "Directorio Web" },
+  { value: "plugin", label: "Plugin CMS" },
+  { value: "webapp", label: "Aplicación Web" },
+  { value: "otro", label: "Otro proyecto a medida" },
 ];
 ---
 
@@ -35,7 +38,7 @@ const serviceOptions = [
       </h2>
 
       <p
-        class="text-zinc-500 font-mono text-xs uppercase tracking-widest max-w-md mx-auto"
+        class="text-zinc-500 font-sans text-xs uppercase tracking-widest max-w-md mx-auto"
       >
         Cuéntanos sobre tu visión y construyamos algo extraordinario juntos.
       </p>
@@ -53,6 +56,11 @@ const serviceOptions = [
           type="hidden"
           name="access_key"
           value="2a3feaee-c6b5-47fb-9fa5-88e28ee0dfd9"
+        />
+        <input
+          type="hidden"
+          name="redirect"
+          value="https://webkode.cl/thanks"
         />
         <input
           type="hidden"
@@ -143,7 +151,7 @@ const serviceOptions = [
             <div class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse">
             </div>
             <span
-              class="text-[10px] font-mono uppercase tracking-widest text-zinc-500"
+              class="text-[10px] font-sans uppercase tracking-widest text-zinc-500"
               >Disponibilidad Inmediata</span
             >
           </div>
