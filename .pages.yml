@@ -14,9 +14,9 @@ content:
     type: collection
     path: src/content/projects
     format: yaml-frontmatter
-    filename: "{primary}.md"
+    filename: "{slug}.md"
     view:
-      fields: [title, client, year, featured, order]
+      fields: [title, slug, client, year, featured, order]
       primary: title
       sort: [order, title, year]
       default:
@@ -27,6 +27,11 @@ content:
         label: Título
         type: string
         required: true
+      - name: slug
+        label: Slug (URL)
+        type: string
+        required: true
+        pattern: "^[a-z0-9]+(?:-[a-z0-9]+)*$"
       - name: client
         label: Cliente
         type: string
