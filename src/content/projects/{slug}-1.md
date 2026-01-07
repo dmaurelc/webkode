@@ -11,7 +11,7 @@ services:
 link: https://redicom.cl
 coverImage: /assets/projects/redicom.avif
 theme: dark
-featured: false
+featured: true
 order: 99
 ---
 Soluciones robustas de ciberseguridad corporativa con más de 18 años de trayectoria en el mercado chileno.
