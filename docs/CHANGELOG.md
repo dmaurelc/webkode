@@ -2,6 +2,14 @@
 
 Todas las novedades y cambios notables del proyecto Webkode se documentarán en este archivo.
 
+## [1.2.1] - 2026-01-07
+
+### Corregido
+
+- **PagesCMS Config**: Solucionado el problema de generación de nombres de archivo (ahora usa `project-title.md` limpio).
+- **Sincronización Content**: Restaurados proyectos eliminados accidentalmente por conflictos de git (`flaiter-ai.md`).
+- **Data Integrity**: Asegurado el formato `yaml-frontmatter` para compatibilidad total con Astro.
+
 ## [1.2.0] - 2026-01-07
 
 ### Añadido

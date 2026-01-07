@@ -21,4 +21,4 @@
 
 - [x] Sync with remote changes (.pages.yml) <!-- id: 8 -->
 - [x] Merge feature branch <!-- id: 9 -->
-- [ ] Perform Release v1.2.0 <!-- id: 10 -->
+- [x] Perform Release v1.2.0 <!-- id: 10 -->
