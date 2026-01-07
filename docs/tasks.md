@@ -1,10 +1,10 @@
-# Task: Release New Version
+# Task: Release Version 1.1.2
 
 ## Status
 
-- [x] Fix FAQ accordion double-click issue in `src/components/FAQ.astro` <!-- id: 0 -->
-- [x] Determine new SemVer version (1.1.1) <!-- id: 1 -->
-- [x] Update `docs/CHANGELOG.md` and `README.md` <!-- id: 2 -->
-- [x] Update `src/components/Footer.astro` version <!-- id: 5 -->
-- [ ] Copy artifacts to `docs/` <!-- id: 3 -->
-- [ ] Git commit, tag, and push <!-- id: 4 -->
+- [x] Update `package.json` version to 1.1.2 <!-- id: 0 -->
+- [x] Update `docs/CHANGELOG.md` <!-- id: 1 -->
+- [x] Update `src/components/Footer.astro` version <!-- id: 2 -->
+- [x] Update artifacts (`walkthrough.md`, `task.md`) <!-- id: 3 -->
+- [ ] Copy artifacts to `docs/` <!-- id: 4 -->
+- [ ] Git commit, tag, and push <!-- id: 5 -->

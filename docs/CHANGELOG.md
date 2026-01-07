@@ -2,6 +2,13 @@
 
 Todas las novedades y cambios notables del proyecto Webkode se documentarán en este archivo.
 
+## [1.1.2] - 2026-01-07
+
+### Añadido
+
+- **Analytics**: Implementación de Google Analytics (GA4) con tracking global.
+- **SEO**: Verificación de propiedad para Google Search Console.
+
 ## [1.1.1] - 2026-01-07
 
 ### Mejorado
