@@ -1,0 +1,70 @@
+backend:
+  name: github
+  repo: dmaurelc/webkode
+  branch: main
+  auth_type: implicit
+
+media:
+  input: public/assets/projects
+  output: /assets/projects
+
+content:
+  - name: projects
+    label: Proyectos
+    type: collection
+    path: src/content/projects
+    format: frontmatter
+    fields:
+      - name: title
+        label: Título
+        type: string
+        required: true
+      - name: client
+        label: Cliente
+        type: string
+        required: true
+      - name: description
+        label: Descripción Corta
+        type: text
+        required: true
+      - name: year
+        label: Año
+        type: number
+        default: 2026
+      - name: services
+        label: Servicios
+        type: list
+        default: ["Desarrollo Web"]
+      - name: link
+        label: URL del Proyecto
+        type: string
+      - name: coverImage
+        label: Imagen de Portada
+        type: image
+        required: true
+      - name: gallery
+        label: Galería
+        type: list
+        fields:
+          - name: image
+            type: image
+      - name: theme
+        label: Tema
+        type: select
+        options:
+          - label: Dark
+            value: dark
+          - label: Light
+            value: light
+        default: dark
+      - name: featured
+        label: Destacado Home
+        type: boolean
+        default: false
+      - name: order
+        label: Orden
+        type: number
+        default: 99
+      - name: body
+        label: Contenido (Case Study)
+        type: rich-text
