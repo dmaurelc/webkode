@@ -3,22 +3,27 @@ const faqs = [
   {
     question: "¿Qué tecnologías utilizan para el desarrollo?",
     answer:
-      "Trabajamos principalmente con Astro, React y Tailwind CSS para asegurar el máximo rendimiento (Core Web Vitals) y una experiencia de usuario fluida.",
+      "Trabajamos principalmente con Astro, Next.js, React, Node.js, Tailwind CSS entre otras tecnologías para asegurar el máximo rendimiento (Core Web Vitals) y una experiencia de usuario fluida.",
   },
   {
     question: "¿Cuánto tiempo toma entregar un proyecto?",
     answer:
-      "Un proyecto boutique estándar suele tomar entre 4 a 8 semanas, dependiendo de la complejidad de las integraciones y el nivel de personalización del diseño.",
+      "Un proyecto estándar suele tomar entre 4 a 8 semanas, dependiendo de la complejidad de las integraciones y el nivel de personalización del diseño, todo depende de la complejidad del proyecto.",
   },
   {
     question: "¿Ofrecen servicios de mantenimiento?",
     answer:
-      "Sí, todos nuestros proyectos incluyen un periodo de garantía y soporte técnico, además de planes de mantenimiento evolutivo para mantener tu sitio a la vanguardia.",
+      "Sí, todos nuestros proyectos incluyen un periodo de garantía y soporte técnico, además de planes de mantenimiento evolutivo para mantener tu sitio a la vanguardia y para nuevas funcionalidades.",
   },
   {
     question: "¿Cómo es el proceso de diseño?",
     answer:
-      "Fusionamos arquitectura técnica con diseño de autor. Cada pixel es intencional y cada solución es única para la identidad de tu marca.",
+      "Fusionamos arquitectura técnica con diseño de autor. Cada solución es única para la identidad de tu marca y para cumplir con los estándares de diseño web moderno.",
+  },
+  {
+    question: "¿Qué tipo de proyectos pueden hacerse?",
+    answer:
+      "Podemos hacer cualquier tipo de proyecto web, desde landing pages hasta aplicaciones web completas.",
   },
 ];
 ---
@@ -34,7 +39,7 @@ const faqs = [
           <div class="w-8 md:w-12 h-px bg-accent"></div>
           <span
             class="text-xs font-light tracking-[0.4em] uppercase text-brand-muted"
-            >Índice Técnico</span
+            >Dudas frecuentes</span
           >
         </div>
         <h2
@@ -172,6 +177,6 @@ const faqs = [
   }
 
   // Run on load and on view transitions
-  setupFAQ();
+
   document.addEventListener('astro:page-load', setupFAQ);
 </script>

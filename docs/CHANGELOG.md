@@ -2,6 +2,26 @@
 
 Todas las novedades y cambios notables del proyecto Webkode se documentarán en este archivo.
 
+## [1.1.1] - 2026-01-07
+
+### Mejorado
+
+- **Navegación & Links**:
+  - Cambio global de "Servicios" a "Soluciones" (Header, Footer, IDs).
+  - Actualización de links de navegación (`#portafolio` -> `#proyectos`, `#agendar` -> `#contacto`).
+- **UI Header**: CTA actualizado de "Cotizar" a "Comenzar" con icono de flecha y ajustes de tipografía.
+- **UI Hero**: Ajuste de opacidad en patrón de fondo y cambio de copy ("DISEÑO WEB MODERNO" -> "Al siguiente nivel").
+- **Sección Soluciones**: Renombrado de "Nuestros Servicios" a "Como funciona" y "Servicio #" a "Paso #".
+- **Contenido FAQ**:
+  - Respuestas más detalladas sobre stack tecnológico (Next.js, Node.js).
+  - Nuevo item sobre tipos de proyectos.
+  - Cambio de título "Indice Técnico" a "Dudas frecuentes".
+- **Scheduler**: Actualización de las opciones de servicios en el formulario de contacto.
+
+### Corregido
+
+- **FAQ Accordion**: Solucionado el bug que requería doble click para abrir/cerrar items.
+
 ## [1.1.0] - 2026-01-06
 
 ### Añadido

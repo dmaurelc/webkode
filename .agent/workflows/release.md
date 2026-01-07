@@ -2,10 +2,10 @@
 description: Proceso estandarizado para realizar releases con SemVer, actualización de docs y git tags.
 ---
 
-Este workflow debe ejecutarse cuando el usuario solicite actualizar documentación, hacer commit de cambios pendientes y liberar una nueva versión (Release).
+Este workflow debe ejecutarse cuando el usuario solicite actualizar documentación, solo hacer commit cuanto te lo solicite, de cambios pendientes y liberar una nueva versión (Release).
 
 1. Determinar la nueva versión SemVer (PATCH, MINOR o MAJOR) basada en los cambios recientes.
-2. Actualizar `docs/CHANGELOG.md` insertando la nueva versión al inicio.
+2. Actualizar `docs/CHANGELOG.md` insertando la nueva versión al inicio y el archivo principal del proyecto `README.md`
 3. Copiar los artefactos actuales a la carpeta de documentación:
    - `cp .gemini/antigravity/brain/.../task.md docs/tasks.md` (Ajustar ruta de origen dinámicamente)
    - `cp .gemini/antigravity/brain/.../walkthrough.md docs/walkthrough.md` (Ajustar ruta de origen dinámicamente)

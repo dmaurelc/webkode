@@ -1,34 +1,28 @@
-# Walkthrough: Identidad Visual y Refinamientos Finales (v1.1.0)
+# Release 1.1.1 Walkthrough
 
-En este sprint final, hemos consolidado la identidad visual de Webkode e implementado mejoras críticas en la experiencia de usuario y la documentación del proyecto.
+## Summary
 
-## Cambios Implementados
+This release includes a critical fix for the FAQ accordion functionality, alongside extensive UI polishes, navigation updates, and content refinements to better align with the brand identity.
 
-### 1. Nueva Identidad Visual
+## Changes
 
-Se ha seleccionado e implementado la variante de logotipo **"V4 Thin Sq Solid"**, que presenta un diseño arquitectónico minimalista con tres pilares isométricos calados en un cuadrado sólido.
+### 1. Fix: FAQ Accordion
 
-- **Logo en Navbar:** Implementado con soporte para estados hover (cambio de color a `accent`).
-- **Favicon:** Generado y configurado en `public/favicon.svg` para una presencia de marca coherente en el navegador.
+The FAQ component had a logic error where the click event listener was being attached twice. This has been resolved by removing the redundant initialization.
 
-### 2. Refinamiento del Menú Móvil
+### 2. Navigation & Links
 
-Se ha rediseñado la animación del disparador del menú móvil (hamburguesa) para asegurar una transición geométrica perfecta hacia una "X" centrada, utilizando posicionamiento absoluto y transformaciones precisas.
+- **Global Renaming**: Changed "Servicios" to "Soluciones" across Header, Footer, and section IDs.
+- **Link Updates**: Updated navigation links (`#portafolio` -> `#proyectos`, `#agendar` -> `#contacto`) to match new section IDs.
 
-### 3. Actualización del Footer
+### 3. UI Refinements
 
-- **Limpieza de Contenido:** Eliminada la sección de "Recursos" para enfocarse en los links principales de navegación.
-- **Redes Sociales:** Actualizados los enlaces oficiales a LinkedIn, Instagram y GitHub.
-- **Branding:** Integración del nuevo logo y actualización de la versión a `v1.1.0`.
+- **Header CTA**: Changed from "Cotizar" to "Comenzar" and added an animated arrow icon.
+- **Hero Section**: Reduced background pattern opacity for a premium feel and updated the tagline to "Al siguiente nivel".
+- **Services/Soluciones**: Renamed section to "Como funciona" and steps to "Paso #1", "Paso #2", etc.
 
-### 4. Estabilidad y Código
+### 4. Content Updates
 
-- **Correcciones de Linting:** Se corrigieron múltiples errores de sintaxis de Tailwind CSS en los componentes de FAQ.
-- **Limpieza:** Se eliminaron las páginas de demostración temporal (`LogoDemo.astro`).
-
-## Verificación Visual
-
-![Nuevo Logo Webkode](file:///Users/danielmc/Desktop/ProyectosAstro/webkode/public/favicon.svg)
-
-> [!NOTE]
-> El proyecto está ahora listo para su despliegue oficial con la identidad de marca finalizada.
+- **FAQ**: Added details about the tech stack (Next.js, Node.js) and a new item about project types. Renamed "Indice Técnico" to "Dudas frecuentes".
+- **Scheduler**: Updated the "Tipo de proyecto" options to be more granular (Ecommerce, Directory, WebApp, etc.).
+- **Footer**: Updated version display to v1.1.1.

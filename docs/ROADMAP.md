@@ -8,6 +8,9 @@ Planificación estratégica para la evolución de la plataforma.
 - [ ] Optimización de Core Web Vitals (SEO Técnico).
 - [ ] Implementación de sistema de gestión de contenidos (CMS) ligero.
 - [ ] Refinamiento de animaciones complejas en la sección Portfolio.
+- [ ] Implementación de Resend para correos transaccionales personalizados.
+- [ ] Páginas de detalle de proyectos (Portfolio dinámico).
+- [ ] Rediseño y balanceo visual del Footer.
 
 ## Q2 2026: Funcionalidad Avanzada
 
