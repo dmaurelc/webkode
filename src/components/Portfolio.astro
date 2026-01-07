@@ -1,30 +1,12 @@
 ---
-const projects = [
-  {
-    title: "SOLOX SPACE MINING",
-    category: "Tecnología Espacial",
-    image: "/assets/porfolio/soloxspace.avif",
-    link: "https://soloxspace.com/",
-    description:
-      "Plataforma de ingeniería avanzada para la detección de minerales críticos en el espacio y la Tierra.",
-  },
-  {
-    title: "REDICOM CIBERSEGURIDAD",
-    category: "Seguridad IT",
-    image: "/assets/porfolio/redicom.avif",
-    link: "https://redicom.cl/",
-    description:
-      "Soluciones robustas de ciberseguridad corporativa con más de 18 años de trayectoria en el mercado chileno.",
-  },
-  {
-    title: "FLAITER AI",
-    category: "Web App / IA",
-    image: "/assets/porfolio/flaiter.avif",
-    link: "https://flaiter.netlify.app/",
-    description:
-      "Traductor cultural impulsado por inteligencia artificial para decodificar modismos y jerga local.",
-  },
-];
+import { getCollection } from "astro:content";
+
+const projects = await getCollection("projects", ({ data }) => {
+  return data.featured === true;
+});
+const sortedProjects = projects
+  .sort((a, b) => a.data.order - b.data.order)
+  .slice(0, 3);
 ---
 
 <section
@@ -51,7 +33,7 @@ const projects = [
         </h3>
       </div>
       <a
-        href="#"
+        href="/proyectos"
         class="text-xs font-black tracking-widest uppercase text-white hover:text-accent transition-all group pt-4 border-t border-brand-border"
       >
         Ver todos los casos
@@ -61,21 +43,20 @@ const projects = [
     <!-- Stacked Scroll Layout -->
     <div class="flex flex-col gap-0">
       {
-        projects.map((project, index) => (
+        sortedProjects.map((project, index) => (
           <div
             class="sticky top-24 w-full bg-brand-bg pt-12 pb-12 border-t border-brand-border/50"
             style={`z-index: ${index + 10};`}
           >
             <a
-              href={project.link}
-              target="_blank"
-              aria-label={project.title}
+              href={`/proyectos/${project.slug}`}
+              aria-label={project.data.title}
               class="group grid grid-cols-1 md:grid-cols-2 gap-12 items-center"
             >
               <div class="relative overflow-hidden aspect-video">
                 <img
-                  src={project.image}
-                  alt={project.title}
+                  src={project.data.coverImage}
+                  alt={project.data.title}
                   class="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 group-hover:scale-105 transition-all duration-1000"
                 />
                 <div class="absolute inset-0 border border-brand-border/30 group-hover:border-accent/30 transition-colors pointer-events-none" />
@@ -84,13 +65,13 @@ const projects = [
               <div class="flex flex-col gap-6">
                 <div>
                   <span class="text-xs font-light tracking-[0.2em] uppercase text-accent mb-4 block">
-                    {project.category} / 0{index + 1}
+                    {project.data.services[0]} / 0{index + 1}
                   </span>
                   <h4 class="text-3xl md:text-5xl font-bold text-white tracking-tighter leading-none mb-6">
-                    {project.title}
+                    {project.data.title}
                   </h4>
                   <p class="text-brand-muted text-lg max-w-md font-normal leading-relaxed">
-                    {project.description}
+                    {project.data.description}
                   </p>
                 </div>
 
@@ -114,7 +95,7 @@ const projects = [
                     </svg>
                   </div>
                   <span class="text-[10px] font-light tracking-widest uppercase text-white/40 group-hover:text-white transition-colors">
-                    Ir al sitio web
+                    Ver Caso de Estudio
                   </span>
                 </div>
               </div>

@@ -2,6 +2,15 @@
 
 Todas las novedades y cambios notables del proyecto Webkode se documentarán en este archivo.
 
+## [1.2.0] - 2026-01-07
+
+### Añadido
+
+- **Portafolio Interactivo**: Nueva sección `/proyectos` con layout Masonry y páginas de detalle tipo "Case Study".
+- **CMS Headless**: Integración con **PagesCMS** para gestión de contenido sin tocar código (`/admin`).
+- **Astro Content Collections**: Migración de todos los proyectos a colecciones de contenido tipadas.
+- **UI Premium**: Nuevas tarjetas de proyecto con efectos hover y transiciones suaves.
+
 ## [1.1.2] - 2026-01-07
 
 ### Añadido
