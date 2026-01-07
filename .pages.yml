@@ -14,6 +14,7 @@ content:
     type: collection
     path: src/content/projects
     format: yaml-frontmatter
+    filename: "{title}.md"
     view:
       fields: [title, client, year, featured, order]
       primary: title
