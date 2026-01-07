@@ -1,3 +1,9 @@
+backend:
+  name: github
+  repo: dmaurelc/webkode
+  branch: main
+  auth_type: implicit
+
 media:
   input: public/assets/projects
   output: /assets/projects
