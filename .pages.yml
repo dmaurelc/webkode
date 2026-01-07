@@ -13,7 +13,7 @@ content:
     label: Proyectos
     type: collection
     path: src/content/projects
-    format: frontmatter
+    format: yaml-frontmatter
     view:
       fields: [title, client, year, featured, order]
       primary: title
