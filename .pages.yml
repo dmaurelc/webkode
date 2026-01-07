@@ -59,10 +59,11 @@ content:
         label: Tema
         type: select
         options:
-          - label: Dark
-            value: dark
-          - label: Light
-            value: light
+          values:
+            - label: Dark
+              value: dark
+            - label: Light
+              value: light
         default: dark
       - name: featured
         label: Destacado Home
