@@ -40,7 +40,8 @@ content:
         default: 2026
       - name: services
         label: Servicios
-        type: list
+        type: string
+        list: true
         default: ["Desarrollo Web"]
       - name: link
         label: URL del Proyecto
@@ -51,10 +52,8 @@ content:
         required: true
       - name: gallery
         label: Galería
-        type: list
-        fields:
-          - name: image
-            type: image
+        type: image
+        list: true
       - name: theme
         label: Tema
         type: select
