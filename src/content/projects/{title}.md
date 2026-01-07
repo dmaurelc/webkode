@@ -11,6 +11,6 @@ services:
 link: https://webkode.cl/
 coverImage: /assets/projects/webkode.avif
 theme: dark
-featured: false
+featured: true
 order: 99
 ---
