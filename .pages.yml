@@ -16,6 +16,11 @@ content:
     format: frontmatter
     view:
       fields: [title, client, year, featured, order]
+      primary: title
+      sort: [order, title, year]
+      default:
+        sort: order
+        order: asc
     fields:
       - name: title
         label: Título
